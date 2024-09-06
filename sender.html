@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>EncodeDecode</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+
+  <style>
+    /* Style untuk konten formulir */
+    .form-container {
+        text-align: center;
+        margin: auto;
+        width: 50%;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+    }
+
+    /* Style untuk label */
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    /* Style untuk textarea */
+    textarea {
+        width: 100%;
+        height: 100px;
+        padding: 5px;
+        border: 1px solid black;
+        border-radius: 5px;
+        resize: none; /* Prevent textarea from being resized by user */
+    }
+
+    /* Style untuk tombol Kirim Pesan */
+    input[type="submit"] {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: black;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #666666;
+    }
+</style>
+
+
+</head>
+<body>
+    <nav>
+      <div class="navbar">
+        <div class="container nav-container">
+            <input class="checkbox" type="checkbox" name="" id="" />
+            <div class="hamburger-lines">
+              <span class="line line1"></span>
+              <span class="line line2"></span>
+              <span class="line line3"></span>
+            </div>  
+          <div class="logo">
+            <h1>Tadika Mesra</h1>
+          </div>
+          <div class="menu-items">
+            <li><a href="home">Home</a></li>
+            <li><a href="/">Sender</a></li>
+            <li><a href="receiver">Reciver</a></li>
+            <li><a href="temp">Profil</a></li>
+            <li><a href="team">Team</a></li>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </body>
+  <br><br>
+  <div class="form-container">
+    <h1>Kirim Pesan Terenkripsi</h1>
+    <form action="/send_message" method="post">
+        <label for="pesan_tersembunyi">Pesan : </label><br>
+        <textarea id="pesan_tersembunyi" name="pesan_tersembunyi" required></textarea><br><br>
+        <input type="submit" value="Kirim Pesan">
+    </form>
+</div>
+<script>
+  function showAlert() {
+      alert("Pesan terenkripsi berhasil dikirim!");
+  }
+</script>
+</html>

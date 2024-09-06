@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>EncodeDecode</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+  <style>/* CSS Document */
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    
+    h1, h2 {
+      color: #333;
+    }
+    
+    p {
+      line-height: 1.5;
+    }
+    </style>
+</head>
+<body>
+<body>
+    <nav>
+      <div class="navbar">
+        <div class="container nav-container">
+            <input class="checkbox" type="checkbox" name="" id="" />
+            <div class="hamburger-lines">
+              <span class="line line1"></span>
+              <span class="line line2"></span>
+              <span class="line line3"></span>
+            </div>  
+          <div class="logo">
+            <h1>Tentang Aplikasi</h1>
+          </div>
+          <div class="menu-items">
+            <li><a href="home">Home</a></li>
+            <li><a href="/">Sender</a></li>
+            <li><a href="receiver">Reciver</a></li>
+            <li><a href="temp">Temp</a></li>
+            <li><a href="team">Team</a></li>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </body>
+<!-- partial -->
+    <br><pre>
+  <b><h1>  Penjelasan Mengenai Aplikasi</h1></b><br>
+
+  <p>    Fitur Aplikasi
+    Kirim dan Terima Pesan Terenkripsi: Aplikasi ini memungkinkan pengguna untuk mengirim dan menerima pesan terenkripsi antara server dan klien. 
+    Pesan-pesan ini dienkripsi sebelum dikirim dan didekripsi setelah diterima.
+    Monitoring Suhu dari Arduino: Aplikasi ini dapat membaca suhu dari perangkat Arduino yang terhubung 
+    dan mengirimkan data suhu tersebut ke klien menggunakan protokol MQTT.
+    Antarmuka Pengguna yang Sederhana: Terdapat antarmuka pengguna sederhana yang memungkinkan pengguna untuk melakukan berbagai tindakan, 
+    seperti mengirim pesan terenkripsi, mengirim data suhu, dan melihat data suhu yang terkirim</p>
+    <br>
+    <h2>   Komponen Utama</h2><br>
+    <p>
+      Flask Routes: Terdapat beberapa rute yang ditentukan di Flask untuk menangani permintaan dari klien, seperti mengirim pesan, menerima pesan, dan mengirim data suhu.
+      WebSocket Server: Server WebSocket dikelola menggunakan Flask SocketIO, yang memungkinkan komunikasi real-time antara klien dan server.
+      Pengiriman Pesan Terenkripsi: Pesan-pesan terenkripsi dikirim melalui protokol MQTT. Setelah diterima oleh server, pesan tersebut didekripsi dan diteruskan ke klien melalui WebSocket.
+      Pemantauan Suhu: Data suhu dibaca dari perangkat Arduino menggunakan komunikasi serial dan dikirim ke klien menggunakan MQTT.</p>
+      <br>
+
+    <h2>   Alur Kerja Aplikasi</h2><br>
+    <p> 
+      Pengguna mengirim pesan terenkripsi dan data terkait dari halaman sender menggunakan formulir web.
+      Server Flask menerima pesan, mengenkripsi pesan menggunakan metode tertentu, dan mengirimnya ke MQTT broker.
+      MQTT broker meneruskan pesan terenkripsi ke server.
+      Server menerima pesan terenkripsi, mendekripsi pesan, dan mengirimnya ke klien melalui WebSocket.
+      Pengguna dapat melihat pesan yang diterima di halaman receiver dalam bentuk yang sudah didekripsi.</p>
+
+      <br>
+      <pre>
+      <h1>  Enkripsi Dan Dekripsi</h1>
+      <p>     Metode yang digunakan dalam fungsi encode_pesan untuk mengenkripsi pesan adalah dengan menyisipkan 
+        setiap huruf dari pesan asli di antara setiap kata dari pesan tersembunyi dengan spasi. Berikut adalah langkah-langkah yang diambil dalam proses enkripsi:
+
+        Pesan asli dibagi menjadi huruf-huruf individual.
+        Setiap kata dalam pesan tersembunyi dimodifikasi dengan menambahkan spasi sebelum setiap kata.
+        Huruf-huruf dari pesan asli disisipkan di antara setiap kata dari pesan tersembunyi dengan spasi.
+        Setelah proses penyisipan selesai, pesan hasil akan berisi pesan terenkripsi.
+        Contoh:
+        
+        Pesan asli: "Suhu"
+        Pesan tersembunyi: "Ini adalah pesan rahasia"
+        Pesan hasil terenkripsi: " I n i S a d a U l a h p e s H a n r a h a s i a U"
+        
+        Setelah Itu Pesan Akan diubah kebinner 
+
+        Dan Python Server Flask Akan langsung Mengubah Binner Tersebut  mengunkan ASCII Setelah itu Langsung Dikirimkan dikirimkan 
+        ASCII Table yang digunkan https://www.ascii-code.com/
+
+        </p>
+
+</body>
+</html>
